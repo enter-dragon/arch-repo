@@ -36,7 +36,8 @@ jobs:
           fi
           
           # Check remote tag against cached one
-          match_results=$([[ "$(cat cache/chromeos_kernel_tag-cache.txt)" == "$latest_tag" ]] && echo "true" || echo "false")
+          #match_results=$([[ "$(cat cache/chromeos_kernel_tag-cache.txt)" == "$latest_tag" ]] && echo "true" || echo "false")
+          match_results=false
           echo "match_results=$match_results" >> $GITHUB_OUTPUT
           
           # Add sha to output
