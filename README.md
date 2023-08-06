@@ -26,3 +26,5 @@ echo "[eupnea]"$'\n'"Server = https://eupnea-linux.github.io/arch-repo/repodata/
 sudo pacman -Syy
 sudo pacman -S eupnea-utils eupnea-system cgpt-vboot-utils
 ```
+
+Note: Re-packaged due to Eupnea Project sunsetting.
