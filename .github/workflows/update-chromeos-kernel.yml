@@ -158,7 +158,7 @@ jobs:
         run: |
           ls
           ( set -e; stat bzImage )
-          ( set -el; file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2)
+          ( set -e; file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2)
           KERNEL_VERSION=$(file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2) # get kernel version from bzImage
           sed -i "s/$KERNEL_VERSION/insert_version/g" pkgbuild-files/chromeos-kernel-headers.pkgbuild # replace version in pkgbuild file
 
