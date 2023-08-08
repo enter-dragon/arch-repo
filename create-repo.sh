@@ -3,7 +3,11 @@
 set -e
 set -x
 export GPG_TTY=$(tty)
-
+echo "use-agent" >> ~/.gnupg/gpg.conf
+echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+echo RELOADAGENT | gpg-connect-agent
+    
 # Keystore before importing:
 gpg --list-keys
 
