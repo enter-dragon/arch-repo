@@ -52,7 +52,8 @@ jobs:
         id: check-shas
         run: |
           # Download remote sha
-          latest_tag=$(curl -s https://api.github.com/repos/eupnea-linux-backup/chromeos-kernel/releases/latest | jq -r '.tag_name')
+          #latest_tag=$(curl -s https://api.github.com/repos/eupnea-linux-backup/chromeos-kernel/releases/latest | jq -r '.tag_name')
+          latest_tag=$(curl -s https://api.github.com/repos/enter-dragon/chromeos-kernel/releases/latest | jq -r '.tag_name')
           # fail if curl result is empty
           if [[ "$latest_tag" = "null" ]]; then
               echo "latest_tag is empty"
@@ -114,7 +115,8 @@ jobs:
       - name: Add kernel version to headers pkgbuild file
         run: |
           # download bzImage
-          curl --silent -LO https://github.com/eupnea-linux-backup/chromeos-kernel/releases/latest/download/bzImage
+          #curl --silent -LO https://github.com/eupnea-linux-backup/chromeos-kernel/releases/latest/download/bzImage
+          curl --silent -LO https://github.com/enter-dragon/chromeos-kernel/releases/latest/download/bzImage
           KERNEL_VERSION=$(file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2) # get kernel version from bzImage
           sed -i "s/insert_version/$KERNEL_VERSION/g" pkgbuild-files/chromeos-kernel-headers.pkgbuild # replace version in pkgbuild file
 
@@ -137,7 +139,8 @@ jobs:
         run: |
           # Download old repo.
           # Exit in case the branch doesn't exist yet
-          git clone --branch=gh-pages https://github.com/eupnea-linux-backup/arch-repo /tmp/arch-repo || exit 0
+          #git clone --branch=gh-pages https://github.com/eupnea-linux-backup/arch-repo /tmp/arch-repo || exit 0
+          git clone --branch=gh-pages https://github.com/enter-dragon/arch-repo /tmp/arch-repo || exit 0
           
           # Copy old repo to current directory
           cp -r /tmp/arch-repo/repodata .
