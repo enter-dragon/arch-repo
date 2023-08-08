@@ -29,6 +29,18 @@ jobs:
         if: ${{ env.TEST_ENV != 'HOLAMUNDO' }}
         run: echo "The TEST_ENV is NOT set to HOLAMUNDO"
 
+      - name: show environment variable
+        run: |
+          echo ${{ env.TEST_ENV }}
+        
+      - name: Check environment secret programatically
+        if: ${{ secret.PUBLIC != '' }}
+        run: echo "${{ secret.PUBLIC }}"
+
+      - name: Check environment variable programatically2
+        if: ${{ secret.PUBLIC == '' }}
+        run: echo "The secret.PUBLIC is NOT set "
+      
       - name: Checking out repository code
         uses: actions/checkout@v3
         with:
