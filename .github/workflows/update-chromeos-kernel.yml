@@ -12,10 +12,23 @@ concurrency:
 jobs:
   check-sha:
     runs-on: ubuntu-latest
+    environment: arch-repo-env
     outputs:
       match_results: ${{ steps.check-shas.outputs.match_results }}
       remote_tag: ${{ steps.check-shas.outputs.remote_tag }}
     steps:
+      - name: Print environment variables
+        run: |
+          echo "This is the $TEST_ENV environment variable"
+        
+      - name: Check environment variable programatically
+        if: ${{ env.TEST_ENV == 'HOLAMUNDO' }}
+        run: echo "The TEST_ENV is set to HOLAMUNDO"
+
+      - name: Check environment variable programatically2
+        if: ${{ env.TEST_ENV =! 'HOLAMUNDO' }}
+        run: echo "The TEST_ENV is NOT set to HOLAMUNDO"
+
       - name: Checking out repository code
         uses: actions/checkout@v3
         with:
