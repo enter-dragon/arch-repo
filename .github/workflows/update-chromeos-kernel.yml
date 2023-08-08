@@ -156,12 +156,12 @@ jobs:
 
       - name: Remove kernel version from spec files
         run: |
-          FILE1=$(file -bL ./bzImage || true)
-          echo FILE1:
-          echo $FILE1
-          echo FILE2:
-          FILE2=$($FILE1 | grep -o 'version [^ ]*')
-          echo $FILE2
+          #FILE1=$(file -bL ./bzImage || true)
+          #echo FILE1:
+          #echo $FILE1
+          #echo FILE2:
+          #FILE2=$($FILE1 | grep -o 'version [^ ]*')
+          #echo $FILE2
           KERNEL_VERSION=5.10.184-eupnea
           echo $KERNEL_VERSION
           #KERNEL_VERSION=$(file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2) # get kernel version from bzImage
