@@ -156,11 +156,13 @@ jobs:
 
       - name: Remove kernel version from spec files
         run: |
-          ls
-          file -bL ./bzImage
-          file -bL ./bzImage | grep -o 'version [^ ]*' 
-          file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2
-          KERNEL_VERSION=$(file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2) # get kernel version from bzImage
+          FILE1=$(file -bL ./bzImage || true)
+          echo $FILE1
+          FILE2=$($FILE1 | grep -o 'version [^ ]*')
+          echo $FILE2
+          KERNEL_VERSION=$($FILE2 | cut -d ' ' -f 2)
+          echo $KERNEL_VERSION
+          #KERNEL_VERSION=$(file -bL ./bzImage | grep -o 'version [^ ]*' | cut -d ' ' -f 2) # get kernel version from bzImage
           sed -i "s/$KERNEL_VERSION/insert_version/g" pkgbuild-files/chromeos-kernel-headers.pkgbuild # replace version in pkgbuild file
 
       - name: Updating files in main branch
