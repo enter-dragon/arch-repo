@@ -2,6 +2,7 @@
 # This script creates an arch repository layout in the current directory.
 set -e
 set -x
+export GPG_TTY=$(tty)
 
 # Keystore before importing:
 gpg --list-keys
