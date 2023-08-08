@@ -21,7 +21,7 @@ gpg --list-keys
 echo "$private_key" >gpg-private-key.gpg
 
 # import gpg private key
-gpg --no-tty --import gpg-private-key.gpg
+gpg --no-tty --batch --import gpg-private-key.gpg
 # Dump public key into a file
 echo "$public_key" >public_key.gpg
 
