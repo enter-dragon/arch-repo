@@ -4,7 +4,7 @@ set -e
 set -x
 export GPG_TTY=$(tty)
 mkdir -m700 ~/.gnupg/ || true
-systemctl --user status gpg-agent
+systemctl --user status gpg-agent || true
 systemctl --user stop gpg-agent
 systemctl --user start gpg-agent
 touch ~/.gnupg/gpg.conf
