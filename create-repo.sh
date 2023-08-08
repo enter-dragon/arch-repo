@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script creates an arch repository layout in the current directory.
 set -e
-
+set -x
 # Dump gpg private key into a file
 echo "$private_key" >gpg-private-key.gpg
 
