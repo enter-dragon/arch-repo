@@ -13,6 +13,8 @@ jobs:
   check-sha:
     runs-on: ubuntu-latest
     environment: arch-repo-env
+    env:
+      PUBLIC: ${{ secrets.PUBLIC }}
     outputs:
       match_results: ${{ steps.check-shas.outputs.match_results }}
       remote_tag: ${{ steps.check-shas.outputs.remote_tag }}
@@ -34,12 +36,12 @@ jobs:
           echo ${{ env.TEST_ENV }}
         
       - name: Check environment secret programatically
-        if: ${{ secret.PUBLIC != '' }}
-        run: echo "${{ secret.PUBLIC }}"
+        if: ${{ env.PUBLIC != '' }}
+        run: echo "${{ env.PUBLIC }}"
 
       - name: Check environment variable programatically2
-        if: ${{ secret.PUBLIC == '' }}
-        run: echo "The secret.PUBLIC is NOT set "
+        if: ${{ env.PUBLIC == '' }}
+        run: echo "The env.PUBLIC is NOT set "
       
       - name: Checking out repository code
         uses: actions/checkout@v3
