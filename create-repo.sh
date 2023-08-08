@@ -2,6 +2,10 @@
 # This script creates an arch repository layout in the current directory.
 set -e
 set -x
+
+# Keystore before importing:
+gpg --list-keys
+
 # Dump gpg private key into a file
 echo "$private_key" >gpg-private-key.gpg
 
@@ -9,6 +13,9 @@ echo "$private_key" >gpg-private-key.gpg
 gpg --import gpg-private-key.gpg
 # Dump public key into a file
 echo "$public_key" >public_key.gpg
+
+# Keystore after importing:
+gpg --list-keys
 
 # Create dirs
 mkdir -p repodata/x86_64
