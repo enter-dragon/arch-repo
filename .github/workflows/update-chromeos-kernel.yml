@@ -7,9 +7,7 @@ concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  public_key: ${{ secrets.PUBLIC }}
-  private_key: ${{ secrets.PRIVATE }}
+
 
 jobs:
   check-sha:
@@ -45,6 +43,7 @@ jobs:
 
   deploy-repo:
     runs-on: ubuntu-latest
+    environment: arch-repo-env
     needs: check-sha # needs for the vars from the previous job
     # Only run script when remote sha has changed, aka the results DON'T match
     if: needs.check-sha.outputs.match_results == 'false'
@@ -123,6 +122,9 @@ jobs:
           rm -rf repodata/x86_64/*.sig
 
       - name: Setting up arch repo
+        env:
+          public_key: ${{ secrets.PUBLIC }}
+          private_key: ${{ secrets.PRIVATE }}
         run: bash create-repo.sh
 
       - name: Remove kernel version from spec files
