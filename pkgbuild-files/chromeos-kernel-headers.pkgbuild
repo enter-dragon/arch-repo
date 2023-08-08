@@ -1,6 +1,6 @@
 # Maintainer: The Eupnea Project
 pkgname=eupnea-chromeos-kernel-headers
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="This package contains the Eupnea ChromeOS kernel headers. It is only compatible with Eupnea ChromeOS kernels."
 url="https://eupnea-linux-backup.github.io/"
@@ -15,12 +15,12 @@ prepare() {
 package () {
   # Make dirs
   mkdir -p $pkgdir/usr/src
-  mkdir -p $pkgdir/usr/lib/modules/insert_version
+  mkdir -p $pkgdir/usr/lib/modules/
 
   # Unpack tar
   tar xfpJ $srcdir/headers.tar.xz -C $pkgdir/usr/src
 
   # Create symlink
-  ln -s /usr/src/linux-headers-insert_version/ $pkgdir/usr/lib/modules/insert_version/build
+  ln -s /usr/src/linux-headers-/ $pkgdir/usr/lib/modules//build
 
 }
