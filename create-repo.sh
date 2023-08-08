@@ -3,6 +3,8 @@
 set -e
 set -x
 export GPG_TTY=$(tty)
+touch ~/.gnupg/gpg.conf
+touch ~/.gnupg/gpg-agent.conf
 echo "use-agent" >> ~/.gnupg/gpg.conf
 echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
 echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
