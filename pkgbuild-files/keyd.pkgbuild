@@ -11,7 +11,7 @@ license=('MIT')
 
 prepare() {
   git clone --depth=1 https://github.com/rvaiya/keyd.git keyd-remote
-  git clone --depth=1 --branch=main https://github.com/eupnea-linux-backup/arch-repo.git
+  git clone --depth=1 --branch=main https://github.com/enter-dragon/arch-repo.git
   git clone --depth=1 https://github.com/eupnea-linux-backup/eupnea-utils.git
 }
 

@@ -109,7 +109,7 @@ jobs:
         run: |
           # Download old repo.
           # Exit in case the branch doesn't exist yet
-          git clone --branch=gh-pages https://github.com/eupnea-linux-backup/arch-repo /tmp/arch-repo || exit 0
+          git clone --branch=gh-pages https://github.com/enter-dragon/arch-repo /tmp/arch-repo || exit 0
           
           # Copy old repo to current directory
           cp -r /tmp/arch-repo/repodata .

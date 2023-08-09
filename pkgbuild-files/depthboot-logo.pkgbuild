@@ -13,7 +13,7 @@ prepare() {
   # clone the eupnea logo repo
   git clone --depth=1 https://github.com/eupnea-linux-backup/logo.git
   # clone the arch-repo repo
-  git clone --depth=1 --branch=main https://github.com/eupnea-linux-backup/arch-repo.git
+  git clone --depth=1 --branch=main https://github.com/enter-dragon/arch-repo.git
 }
 
 package () {
